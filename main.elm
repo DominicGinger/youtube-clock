@@ -7,7 +7,7 @@ import Date exposing (..)
 
 
 youtubeUrl =
-    "https://www.youtube.com/embed?listType=search&list="
+    "https://www.youtube.com/embed?autoplay=1&loop=1&rel=0&controls=0&listType=search&list="
 
 
 main =
@@ -59,11 +59,9 @@ update msg model =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    Time.every Time.minute Tick
+    Time.every Time.second Tick
 
 
 view : Model -> Html Msg
 view model =
-    div [ id "ytPlayer" ]
-        [ iframe [ src model, style [ ( "width", "100%" ), ( "height", "100%" ) ] ] []
-        ]
+    iframe [ src model, style [ ( "width", "100%" ), ( "height", "100%" ), ( "border", "none" ), ( "position", "absolute" ) ] ] []
